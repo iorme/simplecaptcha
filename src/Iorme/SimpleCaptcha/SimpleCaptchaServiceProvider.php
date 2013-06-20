@@ -13,6 +13,8 @@ class SimpleCaptchaServiceProvider extends ServiceProvider {
 
 	public function boot() {
 		$this->package('iorme/simplecaptcha');
+
+		require __DIR__ . '/../../routes.php';
 	}
 
 	public function register() {

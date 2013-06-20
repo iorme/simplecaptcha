@@ -1,6 +1,6 @@
 <?php
 namespace Iorme\SimpleCaptcha;
-use Str, Session;
+use Str, Session, HTML, URL;
 /**
  *
  * Simple PHP captcha generator
@@ -20,18 +20,18 @@ class SimpleCaptcha {
 	protected $string;
 
 	public function __construct() {
-		$this->dirs = __DIR__ . '/../public/assets/fonts';;
+		$this->dirs = __DIR__ . '/../../../public/assets/fonts/';
 		$this->fontsizes = array(13,14,15,16,17);
 		$this->fontsize = $this->asset('fontsize');
 		$this->font = $this->asset('fonts');
-
-		$this->string = $this->generateString();
 	}
 
 	/*
 	Generate captcha image
 	*/
 	public function create() {
+		$this->string = $this->generateString();
+
 		$image = imagecreatetruecolor(100, 50);
 		$bg = imagecolorallocate($image, rand(0,255), rand(0,255), 55);
 		imagefill($image, 0, 0, $bg);
@@ -50,7 +50,7 @@ class SimpleCaptcha {
         } 
 		
 		imagealphablending($image, false);
-
+				
 		header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
         header('Pragma: no-cache');
 		header("Content-type: image/png");  
@@ -72,7 +72,7 @@ class SimpleCaptcha {
 	/*
 	Generate string
 	*/
-	protected function generateString() {
+	public function generateString() {
 		$string = Str::random(5);
 
 		Session::put('captchasess', $string);
@@ -80,7 +80,7 @@ class SimpleCaptcha {
 		return $string;
 	}
 
-	protected function listFonts() {
+	public function listFonts() {
 
     	$fonts = array();
 		$ext = 'ttf';
@@ -92,7 +92,7 @@ class SimpleCaptcha {
 		return $fonts;
     }
 
-    protected function asset($type = 'fonts') {
+    public function asset($type = 'fonts') {
     	if($type == 'fonts') {
     		$fonts = static::listFonts();
     		$asset = $fonts[rand(0, count($fonts) - 1)];
@@ -103,8 +103,9 @@ class SimpleCaptcha {
     	return $asset;
     } 
 
-    public static function image() {
-		return URL::to('simplecaptcha?' . mt_rand(100000, 999999));
+    public function img($attributes = array())
+    {
+        return HTML::image(URL::to('/simplecaptcha?' . mt_rand(100000, 999999)), 'Captcha', $attributes);
     }
 }
 ?>
