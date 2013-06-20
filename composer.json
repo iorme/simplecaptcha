@@ -19,10 +19,7 @@
     "autoload": {
        "psr-0": {
             "Iorme\\SimpleCaptcha": "src/"
-        },
-        "classmap": [
-            "src/Iorme/SimpleCaptcha/SimpleCaptcha"
-        ]
+        }
     },
     "minimum-stability": "dev"
 }
