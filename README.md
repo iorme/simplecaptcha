@@ -1,1 +1,1 @@
-Simple PHP captcha generator
+Simple PHP captcha generator for Laravel 4 
