@@ -13,12 +13,6 @@ class SimpleCaptchaServiceProvider extends ServiceProvider {
 
 	public function boot() {
 		$this->package('iorme/simplecaptcha');
-		$app = $this->app;
-
-		$this->app->finish(function() use $app
-		{
-
-		});
 	}
 
 	public function register() {
