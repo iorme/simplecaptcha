@@ -1,0 +1,28 @@
+{
+    "name": "iorme/simplecaptcha",
+    "description": "Create simple captcha using php",
+    "keywords": ["captcha", "php"],
+    "homepage": "https://github.com/iorme/simplecaptcha",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Harry Yunanto",
+            "email": "yunanto2209@gmail.com",
+            "homepage": "http://twitter.com/iorme"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+       "psr-0": {
+            "Iorme\\SimpleCaptcha": "src/"
+        },
+        "classmap": [
+            "src/Iorme/SimpleCaptcha/SimpleCaptcha"
+        ]
+    },
+    "minimum-stability": "dev"
+}
