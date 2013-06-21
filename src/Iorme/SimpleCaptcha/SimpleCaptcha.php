@@ -63,10 +63,9 @@ class SimpleCaptcha {
 	*/
 	public static function check($value)
     {
-
 		$captchasess = Session::get('captchasess');
 
-        return $value != null && $captchasess != null && Hash::check($captchasess);
+        return $value != null && $captchasess != null && $captchasess == $value;
     }
 
 	/*
